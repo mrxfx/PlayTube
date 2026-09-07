@@ -71,7 +71,7 @@
 * **Gesture Controls:** Control brightness, volume, and playback with gestures.
 * **Orientation Controls:** Easily switch between portrait and landscape modes.
 * **Subscription Management:** Subscribe to and manage channels without a Google account.
-* **Privacy First:** No ads, tracking, or unnecessary data collection.
+* **Privacy First:** No ads, tracking, or data collection.
 
 ### Personalized Recommendations
 
