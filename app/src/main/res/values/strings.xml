@@ -137,7 +137,7 @@
 
     <!-- Settings -->
     <string name="about_developer">About Developer</string>
-    <string name="developed_by">Developed by Arslan Daim Shar</string>
+    <string name="developed_by">Developed by Arsalan Daim &amp; Contributors</string>
     <string name="ok">OK</string>
     <string name="confirm">Confirm</string>
     <string name="clear_all_downloads_title">Clear all downloads?</string>

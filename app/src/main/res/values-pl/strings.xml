@@ -135,7 +135,7 @@
 
     <!-- Settings -->
     <string name="about_developer">O deweloperze</string>
-    <string name="developed_by">Stworzone przez Arslan Daim Shar</string>
+    <string name="developed_by">Stworzone przez Arsalan Daim &amp; Contributors</string>
     <string name="ok">OK</string>
     <string name="confirm">Potwierdź</string>
     <string name="clear_all_downloads_title">Wyczyścić wszystkie pobrania?</string>

@@ -6,7 +6,7 @@
 
     <!-- Settings -->
     <string name="about_developer">Geliştirici Hakkında</string>
-    <string name="developed_by">Arslan Daim Shar tarafından geliştirildi</string>
+    <string name="developed_by">Arsalan Daim &amp; Contributors tarafından geliştirildi</string>
     <string name="ok">Tamam</string>
     <string name="confirm">Onayla</string>
     <string name="clear_all_downloads_title">Tüm indirmeler temizlensin mi?</string>

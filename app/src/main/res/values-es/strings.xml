@@ -138,7 +138,7 @@
 
     <!-- Settings -->
     <string name="about_developer">Acerca del desarrollador</string>
-    <string name="developed_by">Desarrollado por Arslan Daim Shar</string>
+    <string name="developed_by">Desarrollado por Arsalan Daim &amp; Contributors</string>
     <string name="ok">Aceptar</string>
     <string name="confirm">Confirmar</string>
     <string name="clear_all_downloads_title">¿Borrar todas las descargas?</string>
