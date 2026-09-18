@@ -61,7 +61,19 @@ class VideoRepositoryImpl @Inject constructor(
                 try {
                     val service = ServiceList.YouTube
                     val videoUrl = Constants.YouTube.VIDEO_URL_PREFIX + videoId
-                    val streamInfo = StreamInfo.getInfo(service, videoUrl)
+                    val streamInfo = try {
+                        StreamInfo.getInfo(service, videoUrl)
+                    } catch (e: Exception) {
+                        val isBotChallenge = e.javaClass.simpleName == "SignInConfirmNotBotException" || 
+                                             e.message?.contains("Sign in to confirm that you're not a bot") == true
+                        if (isBotChallenge) {
+                            PTLog.w("VideoRepository", "YouTube bot challenge encountered for $videoId, retrying with backoff...")
+                            kotlinx.coroutines.delay(600)
+                            StreamInfo.getInfo(service, videoUrl)
+                        } else {
+                            throw e
+                        }
+                    }
 
                     val isLive = streamInfo.streamType == StreamType.LIVE_STREAM || 
                                  streamInfo.streamType == StreamType.AUDIO_LIVE_STREAM ||

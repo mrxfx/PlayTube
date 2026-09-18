@@ -42,6 +42,7 @@ class YouTubeDownloader(private val client: OkHttpClient) : Downloader() {
             if (existingCookies.none { it.contains("CONSENT=YES") }) {
                 val newCookies = existingCookies.toMutableList().apply { 
                     add(Constants.YouTube.CONSENT_COOKIE) 
+                    add("PREF=f6=40000&f7=4100&hl=en&tz=UTC")
                 }
                 mergedHeaders["Cookie"] = newCookies
             }
