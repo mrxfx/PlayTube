@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.1"
+agp = "9.1.1"
 appcompat = "1.7.0"
 coreKtx = "1.19.0"
 junit = "4.13.2"
@@ -19,7 +19,6 @@ work = "2.11.2"
 newpipeExtractor = "v0.26.5"
 ksp = "2.3.9"
 ktor = "3.5.1"
-leakcanary = "2.14"
 kotlinxSerialization = "1.11.0"
 desugar_jdk_libs = "2.1.5"
 hiltNavigationCompose = "1.3.0"
@@ -30,7 +29,7 @@ gson = "2.12.1"
 mockk = "1.13.17"
 splashscreen = "1.0.1"
 material = "1.14.0"
-leakcanaryVersion = "1.0.0"
+androidx-car-app = "1.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -71,7 +70,6 @@ coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp"
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
 newpipe-extractor = { group = "com.github.TeamNewPipe", name = "NewPipeExtractor", version.ref = "newpipeExtractor" }
-leakcanary-android = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 errorproneAnnotations = { group = "com.google.errorprone", name = "error_prone_annotations", version.ref = "errorProneAnnotations" }
 desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs_nio", version.ref = "desugar_jdk_libs" }
@@ -83,7 +81,7 @@ ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.r
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
-leakcanary = { group = "com.android.tools.studio.leakcanary", name = "leakcanary", version.ref = "leakcanaryVersion" }
+androidx-car-app = { group = "androidx.car.app", name = "app", version.ref = "androidx-car-app" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

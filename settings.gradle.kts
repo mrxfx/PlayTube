@@ -23,6 +23,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PlayTube"
+rootProject.name = "VibeTube"
 include(":app")
  

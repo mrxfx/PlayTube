@@ -1,4 +1,4 @@
-# PlayTube Release ProGuard Rules
+# VibeTube Release ProGuard Rules
 
 # 1. NewPipe Extractor (Critical: uses reflection for many things)
 -keep class org.schabi.newpipe.extractor.** { *; }
@@ -40,10 +40,10 @@
 -keep class org.jsoup.** { *; }
 
 # 9. PlayTube Models & Navigation (Keep data models, repository backup classes, and navigation)
--keep class com.arslandaim.playtube.domain.model.** { *; }
--keep class com.arslandaim.playtube.data.** { *; }
--keep class com.arslandaim.playtube.ui.navigation.** { *; }
--keepclassmembers class com.arslandaim.playtube.ui.navigation.** { *; }
+-keep class com.rahul.vibetube.domain.model.** { *; }
+-keep class com.rahul.vibetube.data.** { *; }
+-keep class com.rahul.vibetube.ui.navigation.** { *; }
+-keepclassmembers class com.rahul.vibetube.ui.navigation.** { *; }
 
 # 10. Missing classes detected by R8
 -dontwarn java.beans.BeanDescriptor

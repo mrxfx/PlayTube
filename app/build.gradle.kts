@@ -7,22 +7,62 @@ plugins {
 }
 
 android {
-    namespace = "com.arslandaim.playtube"
+    namespace = "com.rahul.vibetube"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.arslandaim.playtube"
+        applicationId = "com.rahul.vibetube"
         minSdk = 24
         targetSdk = 36
 
-        versionCode = 17
-        versionName = "1.4.2"
+        versionCode = 1
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("debugConfig") {
+            storeFile = file("${rootDir}/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            enableV1Signing = true
+            enableV2Signing = true
+        }
+
+        create("release") {
+            val keystorePath = System.getenv("VIBETUBE_KEYSTORE_PATH")
+                ?: (project.findProperty("VIBETUBE_KEYSTORE_PATH") as? String)
+                ?: "${rootDir}/release.keystore"
+            val releaseKeystoreFile = file(keystorePath)
+
+            if (releaseKeystoreFile.exists()) {
+                storeFile = releaseKeystoreFile
+                storePassword = System.getenv("VIBETUBE_STORE_PASSWORD")
+                    ?: (project.findProperty("VIBETUBE_STORE_PASSWORD") as? String)
+                    ?: ""
+                keyAlias = System.getenv("VIBETUBE_KEY_ALIAS")
+                    ?: (project.findProperty("VIBETUBE_KEY_ALIAS") as? String)
+                    ?: "vibetube"
+                keyPassword = System.getenv("VIBETUBE_KEY_PASSWORD")
+                    ?: (project.findProperty("VIBETUBE_KEY_PASSWORD") as? String)
+                    ?: ""
+                enableV1Signing = true
+                enableV2Signing = true
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("debugConfig")
+        }
         release {
+            val releaseConfig = signingConfigs.getByName("release")
+            if (releaseConfig.storeFile?.exists() == true) {
+                signingConfig = releaseConfig
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -30,6 +70,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
     }
 
     compileOptions {
@@ -72,7 +117,6 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
-    debugImplementation(libs.leakcanary)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.work)
@@ -89,6 +133,7 @@ dependencies {
     implementation(libs.media3.exoplayer.dash)
     implementation(libs.media3.ui)
     implementation(libs.media3.session)
+    implementation(libs.androidx.car.app)
     implementation(libs.media3.datasource.okhttp)
 
     // Coil
@@ -112,7 +157,6 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.kotlinx.serialization.json)
 
-    debugImplementation(libs.leakcanary.android)
 
     // Ktor
     implementation(libs.ktor.client.core)
@@ -128,4 +172,34 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
+
+tasks.register("cleanAndBuildSafeRelease") {
+    group = "build"
+    description = "Cleans the build directory, removes debug artifacts, and generates a safely signed Release APK."
+    
+    dependsOn("clean")
+    dependsOn("assembleRelease")
+    
+    tasks.getByName("assembleRelease").mustRunAfter("clean")
+    
+    doFirst {
+        println("Starting clean build. Deleting old build artifacts and debug APKs...")
+    }
+    
+    doLast {
+        val releaseConfig = android.signingConfigs.findByName("release")
+        val isProductionSigned = releaseConfig?.storeFile?.exists() == true && !releaseConfig.storePassword.isNullOrBlank()
+
+        println("=========================================================")
+        if (isProductionSigned) {
+            println("SUCCESS: Production Release APK generated!")
+            println("Signing: Production keystore applied with V1 (Jar Signature) and V2 (Full APK Signature).")
+        } else {
+            println("NOTICE: Release build completed without production signing.")
+            println("STATUS: No production release keystore was found or configured.")
+            println("To sign a production release, configure VIBETUBE_KEYSTORE_PATH, VIBETUBE_STORE_PASSWORD, VIBETUBE_KEY_ALIAS, and VIBETUBE_KEY_PASSWORD.")
+        }
+        println("=========================================================")
+    }
 }

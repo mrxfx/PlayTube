@@ -1,0 +1,31 @@
+/*
+ * VibeTube
+ * Copyright (C) 2026 VibeTube contributors
+ *
+ * Licensed under GPL-3.0-or-later
+ */
+package com.rahul.vibetube.domain.usecase
+
+import com.rahul.vibetube.domain.repository.DownloadRepository
+import javax.inject.Inject
+
+class DownloadVideoUseCase @Inject constructor(
+    private val repository: DownloadRepository
+) {
+    suspend operator fun invoke(
+        videoId: String,
+        url: String?,
+        title: String,
+        thumbnailUrl: String,
+        uploaderName: String,
+        quality: String?,
+        format: String?,
+        audioUrl: String? = null,
+        playlistId: String? = null,
+        playlistTitle: String? = null,
+        isAudioOnly: Boolean = false,
+        saveToDevice: Boolean = false
+    ) {
+        repository.startDownload(videoId, url, title, thumbnailUrl, uploaderName, quality, format, audioUrl, playlistId, playlistTitle, saveToDevice, isAudioOnly)
+    }
+}

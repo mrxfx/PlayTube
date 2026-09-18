@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlayTube</string>
+    <string name="app_name">VibeTube</string>
 
     <!-- General -->
     <string name="retry">Spróbuj ponownie</string>
@@ -68,7 +68,7 @@
     <string name="delete_download_desc">Czy jesteś pewny/a że chcesz usunąć ten pobrany film?</string>
 
     <!-- Search -->
-    <string name="search_placeholder">Przeszukaj PlayTube</string>
+    <string name="search_placeholder">Przeszukaj VibeTube</string>
     <string name="discover_new">Odkryj coś nowego</string>
     <string name="recent_searches">Ostatnie wyszukiwania</string>
     <string name="clear_all">Wyczyść wszystko</string>
@@ -107,7 +107,7 @@
     <string name="duration">Czas trwania</string>
     <string name="apply">Zgłoś się</string>
     <string name="close_app_on_finish">Zamknij aplikację na końcu</string>
-    <string name="close_app_desc">Oszczędzaj baterię zamykając PlayTube</string>
+    <string name="close_app_desc">Oszczędzaj baterię zamykając VibeTube</string>
     <string name="timer_minutes_placeholder">%d minut</string>
     <string name="subtitles">Napisy</string>
     <string name="off">Wyłączone</string>
@@ -135,7 +135,7 @@
 
     <!-- Settings -->
     <string name="about_developer">O deweloperze</string>
-    <string name="developed_by">Stworzone przez Arsalan Daim &amp; Contributors</string>
+    <string name="developed_by">Stworzone przez Rahul Haldar</string>
     <string name="ok">OK</string>
     <string name="confirm">Potwierdź</string>
     <string name="clear_all_downloads_title">Wyczyścić wszystkie pobrania?</string>
